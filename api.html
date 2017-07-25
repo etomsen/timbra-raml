@@ -1,0 +1,221 @@
+<!DOCTYPE HTML><html><head><title>Timba.me API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 6.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Timba.me API documentation <small>version v1</small></h1><p>http://api.timbra.me/{version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="login" class="panel-title">/login</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_login"><span class="parent"></span>/login</a> <span class="methods"><a href="#login_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_login" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#login_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="login_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/login</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#login_post_request" data-toggle="tab">Request</a></li><li><a href="#login_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="login_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: login-request</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "username": "johndoe",
+  "password_hash": "f349ec2fabd831534544e35a800ff81d91ddf48c",
+  "password_salt": "client_salt"
+}
+</code></pre></div></div><div class="tab-pane" id="login_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: login-response</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "data_type": "login-response",
+  "user_id": "9137435F-3994-4E1B-A293-29CDBACDDCD3",
+  "user_role": "string",
+  "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
+}
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_login_handshake"><span class="parent">/login</span>/handshake</a> <span class="methods"><a href="#login_handshake_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_login_handshake" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Should be used before the login in order to generate | a password salt and send the to the client</p></div><div class="list-group"><div onclick="window.location.href = '#login_handshake_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="login_handshake_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/login</span>/handshake</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#login_handshake_post_request" data-toggle="tab">Request</a></li><li><a href="#login_handshake_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="login_handshake_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: login-handshake-request</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "username": "johndoe"
+}
+</code></pre></div></div><div class="tab-pane" id="login_handshake_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: login-handshake-response</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "data_type": "login-handshake-response",
+  "password_server_salt": "SALT"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="user__uuid_" class="panel-title">/user/{uuid}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_user__uuid__profile"><span class="parent">/user/{uuid}</span>/profile</a> <span class="methods"><a href="#user__uuid__profile_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#user__uuid__profile_put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_user__uuid__profile" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#user__uuid__profile_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"></div><div class="clearfix"></div></div><div onclick="window.location.href = '#user__uuid__profile_put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="user__uuid__profile_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/user/{uuid}</span>/profile</h4></div><div class="modal-body"><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>jwt</b><p>Authorization with jwt usage header "Authorization" with token</p></div><ul class="nav nav-tabs"><li class="active"><a href="#user__uuid__profile_get_request" data-toggle="tab">Request</a></li><li><a href="#user__uuid__profile_get_response" data-toggle="tab">Response</a></li><li><a href="#user__uuid__profile_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="user__uuid__profile_get_request"><h3>URI Parameters</h3><ul><li><strong>uuid</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="user__uuid__profile_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "id": "9137435F-3994-4E1B-A293-29CDBACDDCD3",
+    "name": "John",
+    "surname": "Doe",
+    "birthday": "2017-07-25T15:39:06.499Z",
+    "birthplace": "Bolzano-Bozen",
+    "image": "",
+    "email": "john.doe@mail.com",
+    "phone": "+393993939939"
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "data_type": "error-response",
+    "error_code": "wrong-request-format",
+    "error_msg": "Request is not valid"
+}
+</code></pre></div></div><div class="tab-pane" id="user__uuid__profile_get_securedby"><h1>Secured by jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Bearer<valid jwt token></valid></p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre></div></li></ul></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="user__uuid__profile_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/user/{uuid}</span>/profile</h4></div><div class="modal-body"><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>jwt</b><p>Authorization with jwt usage header "Authorization" with token</p></div><ul class="nav nav-tabs"><li class="active"><a href="#user__uuid__profile_put_request" data-toggle="tab">Request</a></li><li><a href="#user__uuid__profile_put_response" data-toggle="tab">Response</a></li><li><a href="#user__uuid__profile_put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="user__uuid__profile_put_request"><h3>URI Parameters</h3><ul><li><strong>uuid</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p></div><div class="tab-pane" id="user__uuid__profile_put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "data_type": "error-response",
+    "error_code": "wrong-request-format",
+    "error_msg": "Request is not valid"
+}
+</code></pre></div></div><div class="tab-pane" id="user__uuid__profile_put_securedby"><h1>Secured by jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Bearer<valid jwt token></valid></p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre></div></li></ul></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_user__uuid__locations"><span class="parent">/user/{uuid}</span>/locations</a> <span class="methods"><a href="#user__uuid__locations_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_user__uuid__locations" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>A collection of locations</p></div><div class="list-group"><div onclick="window.location.href = '#user__uuid__locations_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>User Locations by date. If date param is not specified, then today is used</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="user__uuid__locations_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/user/{uuid}</span>/locations</h4></div><div class="modal-body"><div class="alert alert-info"><p>User Locations by date. If date param is not specified, then today is used</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>jwt</b><p>Authorization with jwt usage header "Authorization" with token</p></div><ul class="nav nav-tabs"><li class="active"><a href="#user__uuid__locations_get_request" data-toggle="tab">Request</a></li><li><a href="#user__uuid__locations_get_response" data-toggle="tab">Response</a></li><li><a href="#user__uuid__locations_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="user__uuid__locations_get_request"><h3>URI Parameters</h3><ul><li><strong>uuid</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>date</strong>: <em>(date-only)</em></li></ul></div><div class="tab-pane" id="user__uuid__locations_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+  
+]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "data_type": "error-response",
+    "error_code": "wrong-request-format",
+    "error_msg": "Request is not valid"
+}
+</code></pre></div></div><div class="tab-pane" id="user__uuid__locations_get_securedby"><h1>Secured by jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Bearer<valid jwt token></valid></p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre></div></li></ul></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_user__uuid__activities"><span class="parent">/user/{uuid}</span>/activities</a> <span class="methods"><a href="#user__uuid__activities_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_user__uuid__activities" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>A collection of activities</p></div><div class="list-group"><div onclick="window.location.href = '#user__uuid__activities_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>User Activities by date. If date param is not specified, then today is used</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="user__uuid__activities_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/user/{uuid}</span>/activities</h4></div><div class="modal-body"><div class="alert alert-info"><p>User Activities by date. If date param is not specified, then today is used</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>jwt</b><p>Authorization with jwt usage header "Authorization" with token</p></div><ul class="nav nav-tabs"><li class="active"><a href="#user__uuid__activities_get_request" data-toggle="tab">Request</a></li><li><a href="#user__uuid__activities_get_response" data-toggle="tab">Response</a></li><li><a href="#user__uuid__activities_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="user__uuid__activities_get_request"><h3>URI Parameters</h3><ul><li><strong>uuid</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>date</strong>: <em>(date-only)</em></li></ul></div><div class="tab-pane" id="user__uuid__activities_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[]
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "data_type": "error-response",
+    "error_code": "wrong-request-format",
+    "error_msg": "Request is not valid"
+}
+</code></pre></div></div><div class="tab-pane" id="user__uuid__activities_get_securedby"><h1>Secured by jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Bearer<valid jwt token></valid></p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre></div></li></ul></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#login">/login</a></li><li><a href="#user__uuid_">/user/{uuid}</a></li></ul></div></div></div></div></body></html>

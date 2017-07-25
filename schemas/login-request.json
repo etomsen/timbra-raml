@@ -1,0 +1,30 @@
+{
+    "title": "login-request",
+	"type": "object",
+    "properties": {
+        "username": {
+            "type": "string"
+        },
+        "password_hash": {
+            "type": "string"
+        },
+        "password_salt": {
+            "type": "string"
+        },
+        "token": {
+            "description": "If JWT Authentication token is passed here then it's sent back on success. Used for testing the login",
+            "type": "string"
+        },
+        "device_id": {
+            "type": "string"
+        },
+        "device_model": {
+            "type": "string"
+        },
+        "os_version": {
+            "type": "string"
+        }
+    },
+    "required": ["username", "password_hash", "password_salt"],
+    "additionalProperties": false
+}

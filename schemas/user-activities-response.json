@@ -1,0 +1,29 @@
+{
+    "title": "user-activity",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+              "type": "number"
+          },
+          "desc": {
+              "type": "string"
+          },
+          "date_start": {
+              "type": "string",
+              "format": "date-time"
+          },
+          "date_end": {
+              "type": "string",
+              "format": "date-time"
+          },
+          "is_default": {
+              "type": "boolean"
+          }
+      },
+      "required": ["id", "desc", "date_start", "date_end", "is_default"],
+      "additionalProperties": false
+    },
+    "uniqueItems": true
+}

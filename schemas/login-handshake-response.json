@@ -1,0 +1,14 @@
+{
+  "title": "login-handshake-response",
+	"type": "object",
+    "properties": {
+        "data_type":{
+            "enum": ["login-handshake-response"]
+        },
+        "password_server_salt": {
+            "type": "string"
+        }
+    },
+    "required": ["password_server_salt"],
+    "additionalProperties": false
+}

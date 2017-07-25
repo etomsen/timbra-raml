@@ -1,0 +1,5 @@
+{
+  "username": "johndoe",
+  "password_hash": "f349ec2fabd831534544e35a800ff81d91ddf48c",
+  "password_salt": "client_salt"
+}

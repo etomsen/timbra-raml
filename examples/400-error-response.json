@@ -1,0 +1,5 @@
+{
+    "data_type": "error-response",
+    "error_code": "wrong-request-format",
+    "error_msg": "Request is not valid"
+}

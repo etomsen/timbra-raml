@@ -1,0 +1,6 @@
+{
+  "data_type": "login-response",
+  "user_id": "9137435F-3994-4E1B-A293-29CDBACDDCD3",
+  "user_role": "string",
+  "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
+}

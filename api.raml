@@ -1,0 +1,95 @@
+#%RAML 1.0
+title: Timba.me
+version: v1
+baseUri: http://api.timbra.me/{version}
+protocols: HTTP
+mediaType: application/json
+securitySchemes: !include securitySchemes/jwt.yml
+schemas:
+  error-response: !include schemas/error-response.json
+  login-request: !include schemas/login-request.json
+  login-response: !include schemas/login-response.json
+  login-handshake-request: !include schemas/login-handshake-request.json
+  login-handshake-response: !include schemas/login-handshake-response.json
+  user-profile-response: !include schemas/user-profile-response.json
+  user-locations-response: !include schemas/user-locations-response.json
+  user-activities-response: !include schemas/user-activities-response.json
+
+traits:
+  paged: !include ./traits/paged.raml
+  secured: !include ./traits/secured.raml
+
+resourceTypes:
+  typedCollection: !include ./resourceTypes/typedCollection.raml
+  typedMember: !include ./resourceTypes/typedMember.raml
+
+
+/login:
+  post:
+    displayName: "Login"
+    body:
+      application/json:
+        type: login-request
+        example: !include examples/login-request.json
+    responses:
+      200:
+        body:
+          application/json:
+            type: login-response
+            example: !include examples/login-response.json
+  /handshake:
+    displayName: "Login Handshake"
+    description: "Should be used before the login in order to generate |
+      a password salt and send the to the client"
+    post:
+      body:
+        application/json:
+          type: login-handshake-request
+          example: !include examples/login-handshake-request.json
+      responses:
+        200:
+          body:
+            application/json:
+              type: login-handshake-response
+              example: !include examples/login-handshake-response.json
+
+/user/{uuid}:
+  /profile:
+    securedBy: [jwt]
+    type: {typedMember: {itemSchema : user-profile-response}}
+    get:
+      displayName: "User Profile"
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/user-profile-response.json
+  /locations:
+    type: {typedCollection: {collectionSchema : user-locations-response}}
+    get:
+      displayName: User Locations
+      description: |
+        User Locations by date. If date param is not specified, then today is used
+      securedBy: [jwt]
+      queryParameters:
+        date?: date-only
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/user-locations-response.json
+
+  /activities:
+    type: { typedCollection: { collectionSchema: user-activities-response } }
+    get:
+      displayName: User Activities
+      description: |
+        User Activities by date. If date param is not specified, then today is used
+      securedBy: [jwt]
+      queryParameters:
+        date?: date-only
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/user-activities-response.json

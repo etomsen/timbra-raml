@@ -1,0 +1,14 @@
+jwt:
+    description: |
+        Authorization with jwt usage header "Authorization" with token
+    type: x-jwt
+    describedBy:
+        headers:
+            Authorization:
+                description: "Bearer <valid JWT token>"
+                example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
+        responses:
+            401:
+              description: "Bad or expired token"
+            403:
+              description: "Access denied not valid privilage in resurces"

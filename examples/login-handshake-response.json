@@ -1,0 +1,4 @@
+{
+  "data_type": "login-handshake-response",
+  "password_server_salt": "SALT"
+}

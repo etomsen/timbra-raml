@@ -1,0 +1,35 @@
+{
+    "title": "user-profile-response",
+	"type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$"
+        },
+        "name": {
+            "type": "string"
+        },
+        "surname": {
+            "type": "string"
+        },
+        "birthday": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "birthplace": {
+            "type": "string"
+        },
+        "image": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "phone": {
+            "type": "string"
+        }
+    },
+    "required": ["id", "name", "surname", "birthday", "birthplace", "image", "email", "phone"],
+    "additionalProperties": false
+}

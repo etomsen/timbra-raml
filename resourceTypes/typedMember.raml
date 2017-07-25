@@ -1,0 +1,35 @@
+#%RAML 1.0 ResourceType
+get:
+  responses:
+    200:
+      body:
+        application/json:
+          schema: <<itemSchema>>
+          example: example/<<itemSchema>>.json
+    400:
+    401:
+    403:
+    404:
+    500:
+      body:
+        application/json:
+          schema: !include ../schemas/error-response.json
+          example: !include ../examples/400-error-response.json
+put:
+  body:
+    application/json:
+      schema: <<itemSchema>>
+  responses:
+    200:
+      body:
+        application/json:
+          schema: <<itemSchema>>
+    400:
+    401:
+    403:
+    404:
+    500:
+      body:
+        application/json:
+          schema: !include ../schemas/error-response.json
+          example: !include ../examples/400-error-response.json

@@ -1,0 +1,19 @@
+#%RAML 1.0 ResourceType
+usage: Use to fetch a collection of typed items
+description: A collection of <<resourcePathName>>
+get:
+  description: Get all <<resourcePathName>>, optionally filtered
+  responses:
+    200:
+      body:
+        application/json:
+          schema: <<collectionSchema>>
+    400:
+    401:
+    403:
+    404:
+    500:
+      body:
+        application/json:
+          schema: !include ../schemas/error-response.json
+          example: !include ../examples/400-error-response.json

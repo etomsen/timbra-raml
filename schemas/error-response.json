@@ -1,0 +1,26 @@
+{
+    "title": "error-response",
+    "type": "object",
+    "properties": {
+        "data_type": {
+            "enum": ["error-response"]
+        },
+        "error_code": {
+            "enum": [
+                "unknown-error",
+                "api-unknown-error",
+                "api-unauthorized",
+                "api-forbidden",
+                "jwt-token-invalid",
+                "jwt-token-expired",
+                "wrong-request-format",
+                "location-check-failed"
+            ]
+        },
+        "error_msg": {
+            "type": "string"
+        }
+    },
+    "required": ["data_type", "error_code"],
+    "additionalProperties": true
+}
