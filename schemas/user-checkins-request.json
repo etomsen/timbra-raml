@@ -1,0 +1,33 @@
+{
+    "title": "user-checkins-request",
+    "type": "array",
+    "items": {
+      "type": "object",
+          "properties": {
+              "pending_id": {
+                  "type": "string"
+              },
+              "date": {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              "activity_id": {
+                  "type": "number"
+              },
+              "location_id": {
+                  "type": "number"
+              },
+              "in": {
+                  "type": "boolean"
+              },
+              "lat": {
+                  "type": "string"
+              },
+              "lon": {
+                  "type": "string"
+              }
+          },
+          "required": ["pending_id", "date", "activity_id", "location_id", "in"],
+          "additionalProperties": false
+    }
+}

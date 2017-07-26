@@ -14,6 +14,8 @@ schemas:
   user-profile-response: !include schemas/user-profile-response.json
   user-locations-response: !include schemas/user-locations-response.json
   user-activities-response: !include schemas/user-activities-response.json
+  user-checkins-request: !include schemas/user-checkins-request.json
+  user-checkins-response: !include schemas/user-checkins-response.json
 
 traits:
   paged: !include ./traits/paged.raml
@@ -22,7 +24,6 @@ traits:
 resourceTypes:
   typedCollection: !include ./resourceTypes/typedCollection.raml
   typedMember: !include ./resourceTypes/typedMember.raml
-
 
 /login:
   post:
@@ -54,6 +55,26 @@ resourceTypes:
               example: !include examples/login-handshake-response.json
 
 /user/{uuid}:
+  /checkins:
+    securedBy: [jwt]
+    post:
+      displayName: User checkins
+      description: |
+          Post user pending chechins and return actual checkins
+      queryParameters:
+        date?: date-only
+      body:
+        application/json:
+          schema: user-checkins-request
+          example: !include examples/user-checkins-request.json
+
+      responses:
+        200:
+          body:
+            application/json:
+              schema: user-checkins-response
+              example: !include examples/user-checkins-response.json
+
   /profile:
     securedBy: [jwt]
     type: {typedMember: {itemSchema : user-profile-response}}

@@ -4,6 +4,9 @@
     "items": {
       "type": "object",
       "properties": {
+        "data_type": {
+            "enum": ["user-locations-response"]
+          },
           "id": {
               "type": "number"
           },

@@ -6,16 +6,7 @@
             "enum": ["error-response"]
         },
         "error_code": {
-            "enum": [
-                "unknown-error",
-                "api-unknown-error",
-                "api-unauthorized",
-                "api-forbidden",
-                "jwt-token-invalid",
-                "jwt-token-expired",
-                "wrong-request-format",
-                "location-check-failed"
-            ]
+            "type": "string"
         },
         "error_msg": {
             "type": "string"

@@ -1,0 +1,20 @@
+{
+  "checkins": [
+    {
+      "id": 1,
+      "date": "2017-07-25T15:39:06.499Z",
+      "activity_id": 1,
+      "activity_desc": "Activity",
+      "location_id": 1,
+      "location_desc": "Location",
+      "location_area": "Trento",
+      "in": true
+    }
+  ],
+  "saved_pendings": [
+    {
+      "pending_id": "89d1c936-ce8c-4a7f-b5cd-086297b772cc",
+      "id": 1
+    }
+  ]
+}

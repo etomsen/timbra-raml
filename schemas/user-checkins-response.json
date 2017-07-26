@@ -1,0 +1,61 @@
+{
+    "title": "user-checkins-response",
+	  "type": "object",
+    "properties": {
+        "checkins": {
+            "type": "array",
+            "items": {
+                "title": "checkin",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "in": {
+                        "type": "boolean"
+                    },
+                    "activity_id": {
+                        "type": "number"
+                    },
+                    "activity_desc": {
+                        "type": "string"
+                    },
+                    "location_id": {
+                        "type": "number"
+                    },
+                    "location_desc": {
+                        "type": "string"
+                    },
+                    "location_area": {
+                        "type": "string"
+                    }
+                },
+                "required": ["id", "activity_id", "location_id", "in", "date"],
+                "additionalProperties": false
+            }
+        },
+        "saved_pendings": {
+            "type": "array",
+            "items": {
+                "title": "Saved Pending Item",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "pending_id": {
+                        "type": "string"
+                    }
+                },
+                "required": ["id", "pending_id"],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": ["checkins", "saved_pendings"],
+    "additionalProperties": false
+}

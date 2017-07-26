@@ -1,9 +1,12 @@
 {
-    "title": "user-activity",
+    "title": "user-activities-response",
     "type": "array",
     "items": {
         "type": "object",
         "properties": {
+          "data_type": {
+              "enum": ["user-activities-response"]
+          },
           "id": {
               "type": "number"
           },
